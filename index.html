@@ -1,120 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MERAI AI - MERAI CORE</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#050817;color:#eef4ff;font-family:Arial,sans-serif}
+body{
+ margin:0;background:#050817;color:#eef4ff;
+ font-family:Arial,sans-serif;
+}
 header{text-align:center;padding:25px 12px;background:#0b1430;border-bottom:1px solid #254b9a}
-h1{font-size:34px;margin:4px;color:#48d9ff;letter-spacing:2px}
-header p{color:#b9c9ef}
-main{max-width:850px;margin:22px auto;padding:15px}
-.brain{border:1px solid #315cba;border-radius:22px;padding:24px;text-align:center;background:radial-gradient(circle,#192c65,#080d22 70%);box-shadow:0 0 25px #1748a5}
-.orb{width:145px;height:145px;margin:10px auto;border-radius:50%;display:grid;place-items:center;font-size:65px;background:radial-gradient(circle,#4b8cff,#151044 70%);box-shadow:0 0 35px #347dff}
-h2{color:#72dcff}
-.panel{background:#0d1630;border:1px solid #263d70;border-radius:15px;padding:18px;margin-top:18px}
-label{display:block;margin:12px 0 7px;color:#bcd4ff}
-select,input,button{width:100%;padding:13px;border-radius:9px;border:1px solid #38558b;background:#101d3d;color:white;font-size:16px}
-button{background:#174fd0;border:0;font-weight:bold;margin-top:12px;cursor:pointer}
-button:hover{background:#2872ed}
-#answer{min-height:90px;white-space:pre-wrap;line-height:1.6;color:#a9edff}
-.status{color:#69f5ae;font-size:13px}
-footer{text-align:center;color:#7185b5;padding:25px}
+h1{font-size:34px;margin:5px;color:#72dcff}
+header p{color:#aab8d8}
+main{max-width:900px;margin:auto;padding:15px}
+.panel{
+ background:#0d1832;border:1px solid #294b7c;
+ border-radius:15px;padding:18px;margin:15px 0;
+}
+.brain{
+ text-align:center;padding:25px;
+ background:radial-gradient(circle,#173e83,#081329 70%);
+ border:1px solid #398cff;border-radius:20px;
+}
+.orb{
+ width:115px;height:115px;margin:10px auto;
+ border-radius:50%;
+ background:radial-gradient(circle,#ffffff,#54caff,#1734a5);
+ box-shadow:0 0 35px #168bff;
+}
+h2{color:#73d9ff;margin-top:5px}
+.status{color:#ffcf65;font-size:13px}
+select,input,button{
+ width:100%;padding:13px;margin-top:9px;
+ border-radius:9px;border:1px solid #385b88;
+ background:#101d38;color:white;font-size:15px;
+}
+button{background:#087ce9;border:0;font-weight:bold;cursor:pointer}
+button:active{opacity:.7}
+#answer{
+ white-space:pre-wrap;line-height:1.6;
+ background:#071024;padding:14px;border-radius:10px;
+ min-height:55px;margin-top:12px;
+}
+.grid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:9px;
+}
+.tool{
+ background:#101f3d;padding:12px;border-radius:9px;
+ border:1px solid #243d65;font-size:14px;
+}
+.tool small{display:block;color:#ffca6a;margin-top:5px}
+@media(min-width:600px){
+ .grid{grid-template-columns:repeat(3,1fr)}
+}
+footer{text-align:center;color:#8495b8;padding:25px}
 </style>
 </head>
+
 <body>
+
 <header>
 <h1>MERAI AI</h1>
 <p>Intelligence Beyond Limits.</p>
+<p>Created by Meraj</p>
 </header>
 
 <main>
+
 <section class="brain">
-<div class="orb">🧠</div>
+<div class="orb"></div>
 <h2>MERAI CORE</h2>
 <p>THE MASTER AI BRAIN</p>
-<p class="status">● CORE INTERFACE READY</p>
+<p class="status" id="brainStatus">CORE INTERFACE READY</p>
 <p>Thinking • Memory • Reasoning • Planning</p>
 </section>
 
 <section class="panel">
 <h2>🌐 Language Center</h2>
 <label for="language">अपनी भाषा चुनें / Select Language</label>
-<select id="language">
-<option>English</option>
-<option>हिंदी (Hindi)</option>
-<option>اردو (Urdu)</option>
-<option>भोजपुरी (Bhojpuri)</option>
-<option>मराठी (Marathi)</option>
-<option>বাংলা (Bengali)</option>
-<option>ਪੰਜਾਬੀ (Punjabi)</option>
-<option>ગુજરાતી (Gujarati)</option>
-<option>தமிழ் (Tamil)</option>
-<option>తెలుగు (Telugu)</option>
-<option>ಕನ್ನಡ (Kannada)</option>
-<option>മലയാളം (Malayalam)</option>
-<option>অসমীয়া (Assamese)</option>
-<option>ଓଡ଼ିଆ (Odia)</option>
-<option>संस्कृत (Sanskrit)</option>
-<option>العربية (Arabic)</option>
-<option>فارسی (Persian)</option>
-<option>پښتو (Pashto)</option>
-<option>Türkçe (Turkish)</option>
-<option>Français (French)</option>
-<option>Deutsch (German)</option>
-<option>Español (Spanish)</option>
-<option>Português (Portuguese)</option>
-<option>Italiano (Italian)</option>
-<option>Nederlands (Dutch)</option>
-<option>Русский (Russian)</option>
-<option>Українська (Ukrainian)</option>
-<option>Polski (Polish)</option>
-<option>Čeština (Czech)</option>
-<option>Slovenčina (Slovak)</option>
-<option>Română (Romanian)</option>
-<option>Magyar (Hungarian)</option>
-<option>Ελληνικά (Greek)</option>
-<option>עברית (Hebrew)</option>
-<option>中文 (Chinese)</option>
-<option>日本語 (Japanese)</option>
-<option>한국어 (Korean)</option>
-<option>ไทย (Thai)</option>
-<option>Tiếng Việt (Vietnamese)</option>
-<option>Bahasa Indonesia</option>
-<option>Bahasa Melayu</option>
-<option>Filipino</option>
-<option>မြန်မာ (Burmese)</option>
-<option>नेपाली (Nepali)</option>
-<option>සිංහල (Sinhala)</option>
-<option>ಕश्मीरी (Kashmiri)</option>
-<option>मैथिली (Maithili)</option>
-<option>डोगरी (Dogri)</option>
-<option>कोंकणी (Konkani)</option>
-<option>سنڌي (Sindhi)</option>
-<option>پنجابی (Saraiki)</option>
-<option>Swahili</option>
-<option>Amharic</option>
-<option>Yoruba</option>
-<option>Hausa</option>
-<option>Zulu</option>
-<option>Afrikaans</option>
-<option>Irish</option>
-<option>Welsh</option>
-<option>Swedish</option>
-<option>Norwegian</option>
-<option>Danish</option>
-<option>Finnish</option>
-<option>اردو (Pashto)</option>
-</select>
-<p class="status">50+ language options planned for AI connection.</p>
+<select id="language"></select>
+<p class="status">50+ language options available in this interface. Actual language support depends on connected AI and voice services.</p>
 </section>
 
 <section class="panel">
-<h2>💬 Talk to MERAI CORE</h2>
-<label for="command">अपना सवाल लिखें</label>
+<h2>🧠 Talk to MERAI CORE</h2>
+<label for="command">अपना सवाल लिखें / Ask MERAI</label>
 <input id="command" placeholder="Hello MERAI, how can you help me?">
 <button onclick="askMerai()">Send to MERAI CORE</button>
 <h3>MERAI Response</h3>
@@ -123,35 +95,126 @@ footer{text-align:center;color:#7185b5;padding:25px}
 
 <section class="panel">
 <h2>⚙️ Core Engines</h2>
-<p>🧠 Thinking Engine</p>
-<p>📚 Memory Engine</p>
-<p>🔍 Reasoning Engine</p>
-<p>🗺️ Planning Engine</p>
-<p>⚖️ Decision Engine</p>
-<p>🛡️ Security Engine</p>
-<p>🔗 AI Model Router</p>
-<p>🤖 Agent Controller</p>
-<p>🌐 Multilingual Engine</p>
+<div class="grid" id="engines"></div>
 </section>
+
+<section class="panel">
+<h2>🚀 AI Tools & Model Connectors</h2>
+<p class="status">Planned integrations — not connected until API credentials are configured.</p>
+<div class="grid" id="tools"></div>
+</section>
+
+<section class="panel">
+<h2>🔐 Security & Control</h2>
+<div class="grid">
+<div class="tool">🔒 API Key Protection<small>Backend connection required</small></div>
+<div class="tool">🛡️ Secure Sandbox<small>Not configured yet</small></div>
+<div class="tool">👤 User Approval<small>Planned control system</small></div>
+<div class="tool">📋 Activity Logs<small>Backend required</small></div>
+</div>
+</section>
+
 </main>
 
-<footer>MERAI AI — Created by Meraj</footer>
+<footer>MERAI AI — Created by Meraj<br>MERAI CORE</footer>
 
 <script>
-function askMerai(){
+const languages = [
+"English","Hindi","Urdu","Bhojpuri","Marathi","Bengali",
+"Punjabi","Gujarati","Tamil","Telugu","Kannada","Malayalam",
+"Assamese","Odia","Sanskrit","Arabic","Persian","Pashto",
+"Turkish","French","German","Spanish","Portuguese","Italian",
+"Dutch","Russian","Ukrainian","Polish","Czech","Slovak",
+"Romanian","Hungarian","Greek","Hebrew","Chinese","Japanese",
+"Korean","Thai","Vietnamese","Indonesian","Malay","Filipino",
+"Burmese","Nepali","Sinhala","Kashmiri","Maithili","Dogri",
+"Konkani","Sindhi","Saraiki","Swahili","Amharic","Yoruba",
+"Hausa","Zulu","Afrikaans","Irish","Welsh","Swedish",
+"Norwegian","Danish","Finnish","Serbian","Croatian","Bulgarian",
+"Persian Dari","Uzbek","Kazakh","Mongolian","Tibetan",
+"Khmer","Lao","Javanese","Sundanese","Latin"
+];
+
+const languageSelect=document.getElementById("language");
+languages.forEach(name=>{
+ const option=document.createElement("option");
+ option.textContent=name;
+ option.value=name;
+ languageSelect.appendChild(option);
+});
+languageSelect.value="Hindi";
+
+const engines=[
+"🧠 Thinking Engine","💾 Memory Engine",
+"🔎 Reasoning Engine","🗺️ Planning Engine",
+"⚖️ Decision Engine","🛡️ Security Engine",
+"🤖 AI Model Router","🔗 Agent Controller",
+"🌐 Multilingual Engine","🎙️ Voice Engine",
+"🖼️ Image Engine","🎬 Video Engine",
+"📚 Knowledge & RAG Engine","🧪 Testing Engine",
+"💻 Code Generation Engine","📊 Data Analysis Engine"
+];
+
+const tools=[
+"OpenAI","ChatGPT","Claude","Claude Code","Gemini",
+"Gemini CLI","DeepSeek","Llama 3.3 70B","Qwen3 32B",
+"GPT-OSS 120B","Mistral","Groq","Cerebras",
+"Together AI","NVIDIA NIM","Cloudflare AI Workers",
+"OpenRouter","Blackbox AI","FreeLLMAPI","OmniRoute",
+"LangGraph","Jarvis Voice AI","Terno AI","ChatGO",
+"Morph","Pollinations AI","RAG Pipeline",
+"Vector Database","MCP Tool Protocol","Speech Recognition",
+"Text to Speech","Web Search","Image Generation",
+"Video Generation","Code Sandbox","Agent Collaboration",
+"Memory Database","API Gateway"
+];
+
+function addCards(id,items){
+ const parent=document.getElementById(id);
+ items.forEach(item=>{
+  const card=document.createElement("div");
+  card.className="tool";
+  card.textContent=item;
+  const small=document.createElement("small");
+  small.textContent="Not connected";
+  card.appendChild(small);
+  parent.appendChild(card);
+ });
+}
+addCards("engines",engines);
+addCards("tools",tools);
+
+async function askMerai(){
  const question=document.getElementById("command").value.trim();
- const language=document.getElementById("language").value;
  const answer=document.getElementById("answer");
+ const language=languageSelect.value;
+
  if(!question){
   answer.textContent="Please enter a message first.";
   return;
  }
- answer.textContent=
- "MERAI CORE received your message.\n"+
- "Selected language: "+language+"\n"+
- "Your message: "+question+"\n\n"+
- "This is the first interface demo. Connect an AI API to activate real AI responses.";
+
+ answer.textContent="Checking MERAI CORE connection...";
+
+ try{
+  const response=await fetch("/api/chat",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({message:question,language:language})
+  });
+
+  if(!response.ok) throw new Error("AI backend is not configured.");
+
+  const data=await response.json();
+  answer.textContent=data.reply || "No response received.";
+ }catch(error){
+  answer.textContent=
+  "MERAI CORE interface is ready, but its AI Brain backend is not connected yet.\n\n"+
+  "Next step: connect a secure AI backend and model API. "+
+  "Your API keys must never be placed inside this HTML file.";
+ }
 }
 </script>
+
 </body>
 </html>
