@@ -119,99 +119,39 @@ footer{text-align:center;color:#8495b8;padding:25px}
 <footer>MERAI AI — Created by Meraj<br>MERAI CORE</footer>
 
 <script>
-const languages = [
-"English","Hindi","Urdu","Bhojpuri","Marathi","Bengali",
-"Punjabi","Gujarati","Tamil","Telugu","Kannada","Malayalam",
-"Assamese","Odia","Sanskrit","Arabic","Persian","Pashto",
-"Turkish","French","German","Spanish","Portuguese","Italian",
-"Dutch","Russian","Ukrainian","Polish","Czech","Slovak",
-"Romanian","Hungarian","Greek","Hebrew","Chinese","Japanese",
-"Korean","Thai","Vietnamese","Indonesian","Malay","Filipino",
-"Burmese","Nepali","Sinhala","Kashmiri","Maithili","Dogri",
-"Konkani","Sindhi","Saraiki","Swahili","Amharic","Yoruba",
-"Hausa","Zulu","Afrikaans","Irish","Welsh","Swedish",
-"Norwegian","Danish","Finnish","Serbian","Croatian","Bulgarian",
-"Persian Dari","Uzbek","Kazakh","Mongolian","Tibetan",
-"Khmer","Lao","Javanese","Sundanese","Latin"
-];
+<script>
+async function askMerai() {
+  const question = document.getElementById("command").value.trim();
+  const language = document.getElementById("language").value;
+  const answer = document.getElementById("answer");
 
-const languageSelect=document.getElementById("language");
-languages.forEach(name=>{
- const option=document.createElement("option");
- option.textContent=name;
- option.value=name;
- languageSelect.appendChild(option);
-});
-languageSelect.value="Hindi";
+  if (!question) {
+    answer.textContent = "Please enter a message.";
+    return;
+  }
 
-const engines=[
-"🧠 Thinking Engine","💾 Memory Engine",
-"🔎 Reasoning Engine","🗺️ Planning Engine",
-"⚖️ Decision Engine","🛡️ Security Engine",
-"🤖 AI Model Router","🔗 Agent Controller",
-"🌐 Multilingual Engine","🎙️ Voice Engine",
-"🖼️ Image Engine","🎬 Video Engine",
-"📚 Knowledge & RAG Engine","🧪 Testing Engine",
-"💻 Code Generation Engine","📊 Data Analysis Engine"
-];
+  answer.textContent = "MERAI CORE is thinking...";
 
-const tools=[
-"OpenAI","ChatGPT","Claude","Claude Code","Gemini",
-"Gemini CLI","DeepSeek","Llama 3.3 70B","Qwen3 32B",
-"GPT-OSS 120B","Mistral","Groq","Cerebras",
-"Together AI","NVIDIA NIM","Cloudflare AI Workers",
-"OpenRouter","Blackbox AI","FreeLLMAPI","OmniRoute",
-"LangGraph","Jarvis Voice AI","Terno AI","ChatGO",
-"Morph","Pollinations AI","RAG Pipeline",
-"Vector Database","MCP Tool Protocol","Speech Recognition",
-"Text to Speech","Web Search","Image Generation",
-"Video Generation","Code Sandbox","Agent Collaboration",
-"Memory Database","API Gateway"
-];
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: question,
+        language: language
+      })
+    });
 
-function addCards(id,items){
- const parent=document.getElementById(id);
- items.forEach(item=>{
-  const card=document.createElement("div");
-  card.className="tool";
-  card.textContent=item;
-  const small=document.createElement("small");
-  small.textContent="Not connected";
-  card.appendChild(small);
-  parent.appendChild(card);
- });
+    const data = await response.json();
+
+    answer.textContent = response.ok
+      ? data.reply
+      : "Error: " + (data.error || "AI connection failed");
+  } catch (error) {
+    answer.textContent = "Server connection failed.";
+  }
 }
-addCards("engines",engines);
-addCards("tools",tools);
-
-async function askMerai(){
- const question=document.getElementById("command").value.trim();
- const answer=document.getElementById("answer");
- const language=languageSelect.value;
-
- if(!question){
-  answer.textContent="Please enter a message first.";
-  return;
- }
-
- answer.textContent="Checking MERAI CORE connection...";
-
- try{
-  const response=await fetch("/api/chat",{
-   method:"POST",
-   headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({message:question,language:language})
-  });
-
-  if(!response.ok) throw new Error("AI backend is not configured.");
-
-  const data=await response.json();
-  answer.textContent=data.reply || "No response received.";
- }catch(error){
-  answer.textContent=
-  "MERAI CORE interface is ready, but its AI Brain backend is not connected yet.\n\n"+
-  "Next step: connect a secure AI backend and model API. "+
-  "Your API keys must never be placed inside this HTML file.";
+</script>
  }
 }
 </script>
